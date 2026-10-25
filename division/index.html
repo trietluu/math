@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép chia – Bus-stop method</title>
+<link rel="stylesheet" href="../shared/common.css">
+<link rel="stylesheet" href="division.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="../index.html">🏠 <span data-i18n="back"></span></a>
+  <h1 data-i18n="appTitle"></h1>
+  <span class="spacer"></span>
+  <div class="seg" id="langSeg"><button data-lang="vi">VI</button><button data-lang="en">EN</button></div>
+</div>
+
+<div class="wrap">
+  <div class="card tight" id="picker">
+    <div class="row">
+      <b data-i18n="pick"></b>
+      <span class="muted small" data-i18n="fromBook"></span>
+      <span id="presetChips" class="row"></span>
+    </div>
+    <div class="row" style="margin-top:6px">
+      <span data-i18n="level"></span>
+      <select id="levelSel"></select>
+      <button id="btnRandom" class="primary" data-i18n="random"></button>
+      <span style="margin-left:10px" data-i18n="custom"></span>
+      <input id="inN" type="number" min="10" max="999" placeholder="56"> ÷
+      <input id="inD" type="number" min="2" max="9" placeholder="4" style="width:64px">
+      <button id="btnGo" data-i18n="go"></button>
+    </div>
+    <div class="row" style="margin-top:6px">
+      <span data-i18n="divisors"></span>
+      <span id="divChips" class="row"></span>
+      <span class="spacer"></span>
+      <span data-i18n="layoutLbl"></span>
+      <div class="seg" id="layoutSeg">
+        <button data-layout="short" data-i18n="layoutShort"></button>
+        <button data-layout="long" data-i18n="layoutLong"></button>
+      </div>
+      <label class="chip"><input type="checkbox" id="showTable" checked> <span data-i18n="showTable"></span></label>
+    </div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button data-tab="blocks" data-i18n="tabBlocks"></button>
+    <button data-tab="bridge" data-i18n="tabBridge"></button>
+    <button data-tab="practice" data-i18n="tabPractice"></button>
+  </div>
+
+  <div class="card tight row between">
+    <div id="eq"></div>
+    <div id="lead" class="lead"></div>
+  </div>
+
+  <!-- 1. blocks -->
+  <section id="tab-blocks">
+    <div class="card">
+      <div class="row between">
+        <div class="row">
+          <button id="bPrev" data-i18n="prev"></button>
+          <button id="bNext" class="primary" data-i18n="next"></button>
+          <button id="bPlay" data-i18n="play"></button>
+          <span id="bStep" class="muted small"></span>
+          <span id="bDots" class="steps-dots"></span>
+        </div>
+        <label class="chip" title=""><input type="checkbox" id="askMode"> <span data-i18n="askMode"></span></label>
+      </div>
+      <div id="narr" class="narr" style="margin-top:10px"></div>
+      <div id="askBox" class="askbox hidden"></div>
+      <svg id="svgBlocks" class="scene" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </section>
+
+  <!-- 2. bridge -->
+  <section id="tab-bridge" class="hidden">
+    <div class="card">
+      <div class="row">
+        <button id="gPrev" data-i18n="prev"></button>
+        <button id="gNext" class="primary" data-i18n="next"></button>
+        <button id="gPlay" data-i18n="play"></button>
+        <span id="gStep" class="muted small"></span>
+        <span class="spacer"></span>
+        <span id="rhythm" class="rhythm"></span>
+      </div>
+      <div class="bridge-grid" style="margin-top:10px">
+        <div>
+          <svg id="svgBridge" class="scene" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="narrBridge" class="narr" style="margin-top:10px"></div>
+        </div>
+        <div>
+          <div id="bsBridge" class="bs-wrap"></div>
+          <div id="bridgeNote" class="note info"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. practice -->
+  <section id="tab-practice" class="hidden">
+    <div class="practice-grid">
+      <div class="card">
+        <div id="rhythm2" class="rhythm"></div>
+        <div id="bsPractice" class="bs-wrap"></div>
+        <div id="prompt" class="prompt"></div>
+        <div id="feedback" class="feedback"></div>
+        <div class="row">
+          <button id="pCheck" class="primary lg" data-i18n="check"></button>
+          <button id="pShowAns" data-i18n="showAnswer"></button>
+          <button id="pBlocks" data-i18n="seeBlocks"></button>
+          <button id="pAnother" class="accent" data-i18n="another"></button>
+        </div>
+        <div class="keypad mini" id="keypad"></div>
+        <div id="pBlocksWrap" class="hidden">
+          <div id="narrPractice" class="narr" style="margin-top:10px"></div>
+          <svg id="svgPractice" class="scene" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </div>
+      <aside>
+        <div id="tableCard" class="card tight ttable"></div>
+        <div id="statsCard" class="card tight stats"></div>
+      </aside>
+    </div>
+  </section>
+
+  <details class="card guide" id="guide">
+    <summary data-i18n="guideTitle"></summary>
+    <div id="guideBody"></div>
+  </details>
+</div>
+
+<script src="engine.js"></script>
+<script src="i18n.js"></script>
+<script src="blocks.js"></script>
+<script src="busstop.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

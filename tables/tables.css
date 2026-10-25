@@ -1,0 +1,61 @@
+/* ===== Times tables trainer ===== */
+.topbar h1 { font-size: 1.2rem; margin: 0; }
+.learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.test-grid { display: grid; grid-template-columns: 1fr 280px; gap: 14px; align-items: start; }
+.report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+@media (max-width: 860px) { .learn-grid, .test-grid { grid-template-columns: 1fr; } }
+
+.learn-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; font-family: ui-monospace, Consolas, monospace; font-size: 1.25rem; }
+.learn-rows div { padding: 6px 10px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; }
+.learn-rows div:hover { background: #f3f4f6; }
+.learn-rows div.sel { background: #dbeafe; font-weight: 700; }
+.learn-rows .ans { color: var(--primary); font-weight: 700; }
+.learn-rows.hide .ans { visibility: hidden; }
+.learn-rows div.sel .ans, .learn-rows div.reveal .ans { visibility: visible; }
+
+.array { display: grid; gap: 4px; margin: 6px 0 10px; }
+.array span { width: 16px; height: 16px; border-radius: 4px; background: var(--tens); display: block; }
+.array span.alt { background: var(--ones); }
+.skip { font-family: ui-monospace, Consolas, monospace; font-size: 1.1rem; display: flex; flex-wrap: wrap; gap: 6px; }
+.family { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; font-family: ui-monospace, Consolas, monospace; font-size: 1.15rem; }
+.family span { padding: 6px 10px; border-radius: 8px; background: #eff6ff; color: #1e3a8a; font-weight: 600; }
+.family span.divf { background: #fef2f2; color: #991b1b; }
+.skip span { padding: 2px 8px; border-radius: 999px; background: #eef2ff; }
+.skip span.cur { background: var(--primary); color: #fff; font-weight: 700; }
+
+.test-card { min-height: 420px; }
+.question { font-size: 3rem; font-weight: 700; text-align: center; margin: 18px 0 6px; font-family: ui-monospace, Consolas, monospace; letter-spacing: .04em; }
+.question .unk { display: inline-block; min-width: 1.4em; border-bottom: 4px solid var(--primary); color: var(--primary); }
+.question.small { font-size: 2.1rem; }
+.answer-line { text-align: center; font-size: 1.1rem; min-height: 1.6em; color: var(--muted); }
+.timer { margin: 6px 0; }
+.timer > span { background: var(--good); transition: none; }
+.timer.warn > span { background: var(--accent); }
+.timer.over > span { background: var(--bad); }
+.streak { font-weight: 700; color: var(--accent); }
+#tKeypad, #remKeypad { margin: 14px auto 0; }
+.feedback .big-ok { font-size: 1.4rem; color: var(--good); font-weight: 700; }
+.feedback .big-no { font-size: 1.3rem; color: var(--bad); font-weight: 700; }
+.retype { font-size: 1.1rem; }
+
+.heat { display: grid; gap: 3px; overflow-x: auto; font-size: .85rem; }
+.heat .hc { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 7px; cursor: pointer; font-weight: 600; color: #111827; }
+.heat .hh { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--muted); }
+.heat .hc.b-1 { background: #f3f4f6; color: #9ca3af; font-weight: 400; }
+.heat .hc.b0 { background: #fca5a5; }
+.heat .hc.b1 { background: #fdba74; }
+.heat .hc.b2 { background: #fde68a; }
+.heat .hc.b3 { background: #d9f99d; }
+.heat .hc.b4 { background: #bbf7d0; }
+.heat .hc.b5 { background: #86efac; }
+.heat .hc.b6 { background: #4ade80; }
+.heat .hc.out { opacity: .35; }
+.legend { display: flex; gap: 6px; align-items: center; font-size: .8rem; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: middle; margin-right: 3px; }
+
+.needlist div { display: flex; justify-content: space-between; padding: 4px 8px; border-radius: 6px; font-family: ui-monospace, Consolas, monospace; }
+.needlist div:nth-child(odd) { background: #f9fafb; }
+.mastery div { margin-bottom: 6px; }
+.mastery .progress { margin-top: 2px; }
+.history table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.history td, .history th { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; }

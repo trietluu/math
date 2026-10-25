@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Practice · Học Toán</title>
+<meta name="description" content="Free math practice apps for primary school: bus stop division, times tables. No account, works offline.">
+<link rel="stylesheet" href="shared/common.css">
+<style>
+  .hero { text-align: center; padding: 26px 10px 6px; }
+  .hero h1 { font-size: 2.1rem; margin-bottom: 6px; }
+  .topic { margin-top: 22px; }
+  .topic h2 { font-size: 1.15rem; color: var(--muted); font-weight: 600; margin: 0 0 10px 4px; }
+  .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+  .app { display: flex; gap: 14px; align-items: flex-start; text-decoration: none; color: inherit; border-radius: 18px; padding: 18px; background: var(--card); box-shadow: var(--shadow); border: 2px solid transparent; transition: border-color .15s, transform .1s; }
+  .app:hover, .app:focus-visible { border-color: var(--primary); transform: translateY(-2px); outline: none; }
+  .app .icon { font-size: 2.4rem; line-height: 1; }
+  .app h3 { margin: 0 0 4px; font-size: 1.15rem; }
+  .app p { margin: 0; color: var(--muted); }
+  .tag { display: inline-block; margin-top: 8px; padding: 2px 9px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: .8rem; font-weight: 600; }
+  footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="brand">🧮 Math Practice</span>
+  <span class="spacer"></span>
+  <div class="seg" id="langSeg"><button data-lang="vi">VI</button><button data-lang="en">EN</button></div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1 data-i18n="title"></h1>
+    <p class="muted" data-i18n="subtitle"></p>
+  </div>
+
+  <section class="topic">
+    <h2 data-i18n="topicMulDiv"></h2>
+    <div class="apps">
+      <a class="app" href="tables/index.html">
+        <div class="icon">✖️</div>
+        <div>
+          <h3 data-i18n="tablesTitle"></h3>
+          <p data-i18n="tablesDesc"></p>
+        </div>
+      </a>
+      <a class="app" href="division/index.html">
+        <div class="icon">🚌</div>
+        <div>
+          <h3 data-i18n="divTitle"></h3>
+          <p data-i18n="divDesc"></p>
+          <span class="tag">OF3-3F</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p data-i18n="privacy"></p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var T = {
+    vi: {
+      title: 'Học Toán',
+      subtitle: 'Cậu chọn một trò để luyện nhé!',
+      topicMulDiv: 'Nhân và chia (multiply & divide)',
+      tablesTitle: 'Bảng cửu chương (times tables)',
+      tablesDesc: 'Cậu học mẹo nhớ rồi chơi đố nhanh nhé. Phép nào cậu chưa thuộc, tớ sẽ nhớ để đố lại.',
+      divTitle: 'Phép chia Bus stop',
+      divDesc: 'Cậu chia khối thành các nhóm bằng nhau, rồi học cách viết phép chia ra giấy.',
+      privacy: 'Không cần tài khoản. Tiến độ chỉ lưu trên thiết bị này, không gửi đi đâu.'
+    },
+    en: {
+      title: 'Math Practice',
+      subtitle: 'Pick a game and practise!',
+      topicMulDiv: 'Multiply and divide',
+      tablesTitle: 'Times tables',
+      tablesDesc: 'Learn the tricks, then play a quick quiz. I’ll remember which ones you still need to practise.',
+      divTitle: 'Bus stop division',
+      divDesc: 'Share blocks into equal groups, then learn how to write the division down.',
+      privacy: 'No account needed. Progress stays on this device and is never sent anywhere.'
+    }
+  };
+  var KEY = 'math_lang';
+  var lang = 'vi';
+  try { lang = localStorage.getItem(KEY) || localStorage.getItem('div_lang') || 'vi'; } catch (e) { /* ignore */ }
+  if (!T[lang]) lang = 'vi';
+  function apply() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = T[lang][el.dataset.i18n]; });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('#langSeg button').forEach(function (b) { b.classList.toggle('active', b.dataset.lang === lang); });
+  }
+  document.querySelectorAll('#langSeg button').forEach(function (b) {
+    b.onclick = function () { lang = b.dataset.lang; try { localStorage.setItem(KEY, lang); } catch (e) { /* ignore */ } apply(); };
+  });
+  apply();
+})();
+</script>
+</body>
+</html>

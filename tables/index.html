@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng cửu chương</title>
+<link rel="stylesheet" href="../shared/common.css">
+<link rel="stylesheet" href="tables.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="../index.html">🏠 <span data-i18n="back"></span></a>
+  <h1 data-i18n="appTitle"></h1>
+  <span class="spacer"></span>
+  <div class="seg" id="langSeg"><button data-lang="vi">VI</button><button data-lang="en">EN</button></div>
+</div>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <button data-tab="learn" data-i18n="tabLearn"></button>
+    <button data-tab="test" data-i18n="tabTest"></button>
+    <button data-tab="rem" data-i18n="tabRem"></button>
+    <button data-tab="report" data-i18n="tabReport"></button>
+    <button data-tab="settings" data-i18n="tabSettings"></button>
+  </div>
+
+  <!-- LEARN -->
+  <section id="tab-learn">
+    <div class="card tight">
+      <div class="row"><b data-i18n="pickTable"></b><span id="learnChips" class="row"></span></div>
+    </div>
+    <div class="learn-grid">
+      <div class="card">
+        <div id="learnRows" class="learn-rows"></div>
+        <div class="row" style="margin-top:10px">
+          <button id="learnPractice" class="primary" data-i18n="practiceThis"></button>
+          <button id="learnHideToggle" data-i18n="hideAnswers"></button>
+        </div>
+      </div>
+      <div>
+        <div class="card"><h3 data-i18n="arrayTitle"></h3><div id="learnArray" class="array"></div><p id="learnArrayDesc" class="small muted"></p><div id="learnSkip" class="skip"></div></div>
+        <div class="card" id="learnFamily"></div>
+        <div class="card"><h3 data-i18n="tipsTitle"></h3><div id="learnTips"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="tab-test" class="hidden">
+    <div class="test-grid">
+      <div class="card test-card">
+        <div class="row between">
+          <div class="row"><span class="pill" id="tScope"></span><span class="muted small" id="tCount"></span></div>
+          <div class="row"><span id="tStreak" class="streak"></span><button id="tStop" class="sm" data-i18n="stop"></button></div>
+        </div>
+        <div class="progress timer" id="timerBar"><span></span></div>
+        <div id="question" class="question"></div>
+        <div id="answerLine" class="answer-line"></div>
+        <div id="tFeedback" class="feedback center"></div>
+        <div class="row center" style="justify-content:center">
+          <button id="tStart" class="primary lg" data-i18n="start"></button>
+        </div>
+        <div class="keypad" id="tKeypad"></div>
+      </div>
+      <aside>
+        <div class="card tight"><h3 data-i18n="sessionTitle"></h3><div id="tSession"></div></div>
+        <div class="card tight"><h3 data-i18n="howTitle"></h3><p class="small muted" data-i18n="howText"></p></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- REMAINDER DRILL -->
+  <section id="tab-rem" class="hidden">
+    <div class="test-grid">
+      <div class="card test-card">
+        <p class="muted" data-i18n="remLead"></p>
+        <div class="row"><span data-i18n="divisors"></span><span id="remDivChips" class="row"></span></div>
+        <div id="remQuestion" class="question"></div>
+        <div id="remAnswerLine" class="answer-line"></div>
+        <div id="remFeedback" class="feedback center"></div>
+        <div class="row" style="justify-content:center">
+          <button id="remStart" class="primary lg" data-i18n="start"></button>
+        </div>
+        <div class="keypad" id="remKeypad"></div>
+      </div>
+      <aside>
+        <div class="card tight"><h3 data-i18n="remWhy"></h3><p class="small muted" data-i18n="remWhyText"></p><div id="remStats"></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- REPORT -->
+  <section id="tab-report" class="hidden">
+    <div class="card">
+      <div class="row between"><h2 data-i18n="heatTitle"></h2><div class="legend" id="legend"></div></div>
+      <div id="heatmap" class="heat"></div>
+      <div id="heatDetail" class="note info hidden"></div>
+    </div>
+    <div class="report-grid">
+      <div class="card"><h3 data-i18n="needTitle"></h3><div id="needList"></div></div>
+      <div class="card"><h3 data-i18n="tableMastery"></h3><div id="mastery"></div></div>
+      <div class="card"><h3 data-i18n="historyTitle"></h3><div id="history"></div></div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="tab-settings" class="hidden">
+    <div class="card">
+      <h3 data-i18n="sTables"></h3>
+      <div id="sTables" class="row"></div>
+      <p class="small muted" data-i18n="sTablesHint"></p>
+      <h3 style="margin-top:14px" data-i18n="sMax"></h3>
+      <div class="seg" id="sMax"><button data-v="10">1–10</button><button data-v="12">1–12</button></div>
+      <h3 style="margin-top:14px" data-i18n="sTypes"></h3>
+      <div class="row" id="sTypes">
+        <label class="chip"><input type="checkbox" data-type="mul"> <span data-i18n="typeMul"></span></label>
+        <label class="chip"><input type="checkbox" data-type="missing"> <span data-i18n="typeMissing"></span></label>
+        <label class="chip"><input type="checkbox" data-type="div"> <span data-i18n="typeDiv"></span></label>
+      </div>
+      <h3 style="margin-top:14px" data-i18n="sTime"></h3>
+      <div class="seg" id="sTime"><button data-v="0" data-i18n="noLimit"></button><button data-v="4">4s</button><button data-v="6">6s</button><button data-v="8">8s</button><button data-v="12">12s</button></div>
+      <p class="small muted" data-i18n="sTimeHint"></p>
+      <h3 style="margin-top:14px" data-i18n="sNew"></h3>
+      <div class="seg" id="sNew"><button data-v="2">2</button><button data-v="4">4</button><button data-v="6">6</button></div>
+      <p class="small muted" data-i18n="sNewHint"></p>
+      <h3 style="margin-top:14px" data-i18n="sData"></h3>
+      <div class="row">
+        <button id="sExport" data-i18n="export"></button>
+        <label class="btn" for="sImportFile" data-i18n="import"></label><input type="file" id="sImportFile" accept="application/json" class="hidden">
+        <button id="sReset" data-i18n="reset"></button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
